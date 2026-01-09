@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: lailah_backend
+    ports:
+      - "8082:80"
+    volumes:
+      # This mounts your current folder to the container
+      # Any change you make locally will reflect inside the container
+      - .:/var/www/html
+    environment:
+      - DB_CONNECTION=pgsql
+      - REDIS_HOST=redis
+    networks:
+      - lailah_network
+
+networks:
+  lailah_network:
+    driver: bridge
