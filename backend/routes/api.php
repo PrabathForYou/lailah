@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['jwtauth'])->group(function () {
-    Route::get('/me', function() {
-        echo 'Authenticated user info';
+Route::get('health', function () {
+    return response()->json(['status' => 'OK'], 200);
+});
+
+Route::post('user', [UserController::class, 'store']);
+
+Route::post('auth/login', [AuthController::class, 'login']);
+
+Route::middleware('redis.auth')->group(function () {
+    Route::get('test', function (Request $request) {
+        $user = $request->user();
+        return response()->json(['message' => 'Authenticated', 'user' => $user], 200);
     });
 });
