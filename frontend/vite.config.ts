@@ -10,4 +10,14 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
+    hmr: {
+      host: 'localhost',
+      port: 3000,
+    },
+  },
 })
