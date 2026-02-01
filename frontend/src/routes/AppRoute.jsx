@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "../pages/Login/Login";
 
 const AppRoutes = () => {
-  const isAuthenticated = false; // replace with real auth logic
+  const isAuthenticated = false; 
 
   return (
     <Routes>
