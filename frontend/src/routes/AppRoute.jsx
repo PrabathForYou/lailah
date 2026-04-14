@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "../pages/Login/Login";
+import LoginPage from "../pages/Login/login";
 
 const AppRoutes = () => {
   const isAuthenticated = false; 
