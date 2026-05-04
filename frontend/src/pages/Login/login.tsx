@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginUser } from "../../services/authService";
 import logoBackgroundRemoved from "../../assets/logo-background-removed.png";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,12 @@ const LoginPage = () => {
       setError("Login Failed becuase of " + err.message);
     });
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
 
   return (
